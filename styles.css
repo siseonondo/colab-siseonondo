@@ -1967,7 +1967,7 @@ blockquote {
 .js .side {
   display: block;
   flex-shrink: 0;
-  width: 236px;
+  width: 272px;
   overflow-y: auto;
   padding: 12px 10px 16px;
   border-right: 1px solid var(--border);
