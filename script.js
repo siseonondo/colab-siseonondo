@@ -12,17 +12,32 @@
           btn.textContent = original
         }, 1600)
       }
+      var fallback = function () {
+        var area = document.createElement('textarea')
+        area.value = text
+        area.setAttribute('readonly', '')
+        area.style.position = 'fixed'
+        area.style.opacity = '0'
+        document.body.appendChild(area)
+        area.select()
+        var ok = false
+        try {
+          ok = document.execCommand('copy')
+        } catch (e) {
+          ok = false
+        }
+        document.body.removeChild(area)
+        done(ok)
+      }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(
           function () {
             done(true)
           },
-          function () {
-            done(false)
-          }
+          fallback
         )
       } else {
-        done(false)
+        fallback()
       }
     })
   })
