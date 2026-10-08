@@ -73,6 +73,7 @@
       <a href="#shortcut">단축키</a>
       <a href="#practice">실습</a>
       <a href="#inspiration">응용</a>
+      <a href="#challenge">미니 도전</a>
       <a href="#growth">로드맵</a>
       <a href="#appendix">부록</a>
     </nav>
@@ -93,6 +94,7 @@
           <li><a href="#shortcut">단축키 Shift + Enter</a></li>
           <li><a href="#practice">실습 1 – 4</a></li>
           <li><a href="#inspiration">이런 것도 만들 수 있어요</a></li>
+          <li><a href="#challenge">미니 도전</a></li>
           <li><a href="#growth">다음 단계 로드맵</a></li>
           <li><a href="#appendix">부록 · 화면 구성</a></li>
         </ol>
@@ -173,11 +175,24 @@
         <section id="why" class="block">
           <p class="eyebrow">WHY PYTHON</p>
           <h2>왜 비전공자도 파이썬으로 시작할까요?</h2>
-          <div class="card-grid">
+          <div class="card-grid card-grid-3">
             <article class="card">
               <p class="eyebrow eyebrow-blue">EASY SYNTAX</p>
               <h3>사람의 말과 닮은 문법</h3>
-              <p>세미콜론이나 복잡한 기호 없이, 직관적인 영어 문장처럼 술술 읽히는 쉬운 구조를 갖췄습니다.</p>
+              <p>세미콜론이나 복잡한 기호 없이, 영어 문장처럼 술술 읽히는 쉬운 구조입니다.</p>
+              <pre class="code code-mini"><code><span class="fn">print</span>(<span class="str">"안녕하세요"</span>)</code></pre>
+            </article>
+            <article class="card">
+              <p class="eyebrow eyebrow-blue">ONE LANGUAGE</p>
+              <h3>하나로 여러 일을 해요</h3>
+              <p>업무 자동화, 데이터 분석, 인공지능까지 같은 언어 하나로 시작할 수 있습니다.</p>
+              <pre class="code code-mini"><code><span class="cm"># 자동화 · 분석 · AI</span></code></pre>
+            </article>
+            <article class="card">
+              <p class="eyebrow eyebrow-blue">QUICK RESULT</p>
+              <h3>결과가 바로 보여요</h3>
+              <p>코드 한 줄만 써도 곧바로 결과가 나와서, 배우는 재미를 일찍 느낄 수 있습니다.</p>
+              <pre class="code code-mini"><code><span class="fn">print</span>(10 + 20)  <span class="cm"># 30</span></code></pre>
             </article>
           </div>
         </section>
@@ -304,7 +319,7 @@
               <h3>코랩을 쓰는 이유 (장점)</h3>
               <ol class="plain-list">
                 <li><strong>설치 없는 원클릭 환경</strong><span>PC 사양에 상관없이 브라우저만 켜면 즉시 실행</span></li>
-                <li><strong>무료 고성능 GPU 제공</strong><span>비싼 하드웨어 없이도 인공지능/데이터 연산 가속</span></li>
+                <li><strong>무료 GPU 사용 가능</strong><span>비싼 하드웨어 없이도 AI 연산 가속 (사용량 제한 있음)</span></li>
                 <li><strong>구글 드라이브 쉬운 공유</strong><span>구글 문서처럼 링크 하나로 동료와 코드 공유 및 협업</span></li>
               </ol>
             </article>
@@ -346,7 +361,9 @@
             </li>
             <li class="step">
               <span class="step-num">3</span>
-              <h3>새 작업 시작</h3>
+              <h3>새 노트북 만들기</h3>
+              <p>[파일] → [새 노트북]을 누릅니다</p>
+              <p class="step-extra"><span>빈 코드 셀이 바로 열려요</span></p>
             </li>
           </ol>
         </section>
@@ -383,9 +400,9 @@
               <kbd>Shift</kbd><span aria-hidden="true">+</span><kbd>Enter</kbd>
             </div>
             <div>
-              <p class="shortcut-lead">마우스 클릭 대비 10배 빠른 필수 단축키</p>
+              <p class="shortcut-lead">마우스 클릭보다 훨씬 빠른 필수 단축키</p>
               <p>코드를 작성하고 키보드만 누르면 즉시 실행됩니다.</p>
-              <p>Shift + Enter를 누르면 현재 셀을 실행한 뒤 자동으로 다음 셀을 생성해 연속 코딩이 가능합니다.</p>
+              <p>Shift + Enter를 누르면 현재 셀을 실행한 뒤 다음 셀로 이동해(없으면 새로 만들어) 연속 코딩이 가능합니다.</p>
               <p class="card-note">Ctrl + Enter는 현재 셀에 머무르며 결과를 반복 확인할 때 사용</p>
             </div>
           </div>
@@ -395,7 +412,7 @@
         <section id="practice" class="block">
           <p class="eyebrow">HANDS-ON</p>
           <h2>핵심 실습 4종</h2>
-          <p class="section-lead">코랩의 새 셀에 코드를 입력하고 <kbd>Shift</kbd> + <kbd>Enter</kbd>로 실행해보세요.</p>
+          <p class="section-lead">코랩의 새 셀에 코드를 입력하고 <kbd>Shift</kbd> + <kbd>Enter</kbd>로 실행해보세요. 직접 치기 어려우면 [코드 복사] 버튼을 눌러 붙여넣어도 좋아요.</p>
 
           <article class="practice" id="practice-1">
             <h3><span class="practice-no">실습 1</span> 화면에 글자 띄우기 print()</h3>
@@ -420,14 +437,79 @@
             </div>
           </article>
 
-          <article class="practice practice-pending" id="practice-2">
-            <h3><span class="practice-no">실습 2</span> 리스트</h3>
-            <p class="pending">교안 준비 중입니다.</p>
+          <article class="practice" id="practice-2">
+            <h3><span class="practice-no">실습 2</span> 여러 개를 한 번에 담는 리스트</h3>
+            <div class="split">
+              <div class="notebook notebook-small">
+                <div class="cell">
+                  <div class="cell-head">
+                    <span class="cell-label">코랩 실제 입력창 [1]</span>
+                    <button class="copy-btn" type="button" data-copy-target="code-2">코드 복사</button>
+                  </div>
+                  <pre class="code"><code id="code-2">과일 = [<span class="str">"사과"</span>, <span class="str">"바나나"</span>, <span class="str">"포도"</span>]
+<span class="fn">print</span>(과일)
+<span class="fn">print</span>(과일[0])</code></pre>
+                </div>
+                <div class="output"><span class="out-label">실행 결과 (Output)</span>['사과', '바나나', '포도']<br />사과</div>
+              </div>
+              <div>
+                <p class="eyebrow">기본 리스트 문법</p>
+                <ul class="plain-list">
+                  <li><strong>대괄호 [ ]는 값을 담는 바구니</strong><span>여러 개의 값을 쉼표(,)로 구분해 한꺼번에 담을 수 있습니다.</span></li>
+                  <li><strong>번호는 0부터 시작해요</strong><span>첫 번째 값은 과일[0], 두 번째 값은 과일[1]처럼 번호로 꺼냅니다.</span></li>
+                </ul>
+              </div>
+            </div>
           </article>
 
-          <article class="practice practice-pending" id="practice-3">
-            <h3><span class="practice-no">실습 3</span> 반복문 for</h3>
-            <p class="pending">교안 준비 중입니다.</p>
+          <article class="practice" id="practice-3">
+            <h3><span class="practice-no">실습 3</span> 하나씩 꺼내 반복하는 for 반복문</h3>
+            <div class="split">
+              <div class="notebook notebook-small">
+                <div class="cell">
+                  <div class="cell-head">
+                    <span class="cell-label">코랩 실제 입력창 [1]</span>
+                    <button class="copy-btn" type="button" data-copy-target="code-3">코드 복사</button>
+                  </div>
+                  <pre class="code"><code id="code-3">과일 = [<span class="str">"사과"</span>, <span class="str">"바나나"</span>, <span class="str">"포도"</span>]
+<span class="kw">for</span> 이름 <span class="kw">in</span> 과일:
+    <span class="fn">print</span>(이름, <span class="str">"맛있어요!"</span>)</code></pre>
+                </div>
+                <div class="output"><span class="out-label">실행 결과 (Output)</span>사과 맛있어요!<br />바나나 맛있어요!<br />포도 맛있어요!</div>
+              </div>
+              <div>
+                <p class="eyebrow">기본 반복 문법</p>
+                <ul class="plain-list">
+                  <li><strong>for는 하나씩 꺼내 반복해요</strong><span>리스트의 값을 처음부터 끝까지 한 개씩 꺼내 같은 일을 반복합니다.</span></li>
+                  <li><strong>들여쓰기는 반복할 범위예요</strong><span>콜론(:) 다음 줄은 스페이스 4칸 안쪽으로 써야 for 안의 일이 됩니다.</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="practice" id="practice-errors">
+            <h3><span class="practice-no">잠깐</span> 처음 만나는 오류 3가지와 해결법</h3>
+            <div class="error-grid">
+              <div class="error-card">
+                <span class="error-name">SyntaxError</span>
+                <strong>짝이 안 맞아요</strong>
+                <p>따옴표나 괄호를 열고 닫지 않으면 생겨요.</p>
+                <p class="fix">✅ 해결: 열었으면 꼭 닫아주기</p>
+              </div>
+              <div class="error-card">
+                <span class="error-name">IndentationError</span>
+                <strong>줄이 안 맞아요</strong>
+                <p>for·if 아래 줄을 들여쓰지 않으면 생겨요.</p>
+                <p class="fix">✅ 해결: 스페이스 4칸 들여쓰기</p>
+              </div>
+              <div class="error-card">
+                <span class="error-name">NameError</span>
+                <strong>이름을 못 찾아요</strong>
+                <p>철자가 틀리거나 위 셀을 안 돌리면 생겨요.</p>
+                <p class="fix">✅ 해결: 위쪽 셀부터 <kbd>Shift</kbd> + <kbd>Enter</kbd></p>
+              </div>
+            </div>
+            <p class="card-note">💡 빨간 글씨가 나와도 괜찮아요. 맨 아래 줄의 오류 이름과 줄 번호부터 읽어보세요.</p>
           </article>
 
           <article class="practice" id="practice-4">
@@ -464,6 +546,16 @@
                 <p class="card-note">💡 원하는 데이터만 골라낼 때 조건문을 사용합니다.</p>
               </div>
             </div>
+          </article>
+
+          <article class="practice" id="practice-recap">
+            <h3><span class="practice-no">정리</span> 오늘 실습 4가지, 한 줄로 정리</h3>
+            <ul class="recap-grid">
+              <li><span class="recap-emoji" aria-hidden="true">📢</span><strong>print()</strong><span>화면에 글자를 보여줘요</span><em>확성기</em></li>
+              <li><span class="recap-emoji" aria-hidden="true">🧺</span><strong>리스트 [ ]</strong><span>여러 값을 한꺼번에 담아요</span><em>바구니</em></li>
+              <li><span class="recap-emoji" aria-hidden="true">🔁</span><strong>for 반복문</strong><span>하나씩 꺼내 반복해요</span><em>반복 기계</em></li>
+              <li><span class="recap-emoji" aria-hidden="true">🔀</span><strong>if 조건문</strong><span>조건에 따라 골라요</span><em>갈림길</em></li>
+            </ul>
           </article>
         </section>
 
@@ -502,6 +594,35 @@
               <p class="sample">📡 수집 대상 50개 웹사이트<br />슬랙 메신저 자동 전송</p>
             </article>
           </div>
+        </section>
+
+        <!-- 12-1 MINI CHALLENGE -->
+        <section id="challenge" class="block">
+          <p class="eyebrow">MINI CHALLENGE</p>
+          <h2>미니 도전: 나의 취미 소개하기</h2>
+          <article class="practice">
+            <div class="split">
+              <div class="notebook notebook-small">
+                <div class="cell">
+                  <div class="cell-head">
+                    <span class="cell-label">코랩 실제 입력창 [1]</span>
+                    <button class="copy-btn" type="button" data-copy-target="code-5">코드 복사</button>
+                  </div>
+                  <pre class="code"><code id="code-5">취미 = [<span class="str">"독서"</span>, <span class="str">"산책"</span>, <span class="str">"요리"</span>]
+<span class="kw">for</span> 이름 <span class="kw">in</span> 취미:
+    <span class="fn">print</span>(<span class="str">"제 취미:"</span>, 이름)</code></pre>
+                </div>
+                <div class="output"><span class="out-label">실행 결과 (Output)</span>제 취미: 독서<br />제 취미: 산책<br />제 취미: 요리</div>
+              </div>
+              <div>
+                <p class="eyebrow">배운 것 모두 쓰기</p>
+                <ul class="plain-list">
+                  <li><strong>리스트 속 글자만 바꿔보세요</strong><span>독서·산책·요리를 내 취미로 바꾸면 결과도 바로 달라집니다.</span></li>
+                  <li><strong>결과를 함께 보여주세요</strong><span>실행 결과 화면을 보며 서로의 결과물을 소개해 봅니다.</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
         </section>
 
         <!-- 13 GROWTH -->
