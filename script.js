@@ -53,6 +53,10 @@
   var tocClose = document.getElementById('tocClose')
   var tocList = document.getElementById('tocList')
   var MIN_ZOOM = 0.72
+  var MIN_ZOOM_PHONE = 0.82
+  var MAX_ZOOM = 1.6
+  var BASE_W = 1080
+  var MIN_LOGICAL_W = 780
   var ALIASES = { practice: 'practice-1', top: 'intro' }
   var current = 0
 
@@ -73,16 +77,26 @@
     return a
   })
 
+  // 화면 크기에 맞춰 내용을 키우거나 줄여서 한 화면을 알맞게 채웁니다.
   function fit(page) {
     var inner = page.querySelector('.page-inner')
     if (!inner) return
-    inner.style.zoom = ''
-    var avail = stage.clientHeight
-    var h = inner.scrollHeight
-    if (h > avail && avail > 0) {
-      var z = Math.max(MIN_ZOOM, (avail - 4) / h)
+    var W = stage.clientWidth
+    var H = stage.clientHeight
+    var wide = W > 760
+    var maxZoom = wide ? Math.min(MAX_ZOOM, W / MIN_LOGICAL_W) : 1
+    var minZ = wide ? MIN_ZOOM : MIN_ZOOM_PHONE
+    var chosen = minZ
+    for (var z = maxZoom; z >= minZ - 0.001; z -= 0.04) {
       inner.style.zoom = String(z)
+      inner.style.maxWidth = Math.min(BASE_W, W / z) + 'px'
+      if (inner.getBoundingClientRect().height <= H - 2) {
+        chosen = z
+        break
+      }
     }
+    inner.style.zoom = String(chosen)
+    inner.style.maxWidth = Math.min(BASE_W, W / chosen) + 'px'
   }
 
   function show(i, updateHash) {
