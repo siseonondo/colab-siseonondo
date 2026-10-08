@@ -2192,3 +2192,11 @@ blockquote {
     display: none;
   }
 }
+
+/* 현재 페이지 썸네일이 메뉴 세로 중앙에 오도록 */
+.js .side {
+  position: relative;
+}
+.js .side-list {
+  padding: 30vh 0;
+}

@@ -166,6 +166,15 @@
     inner.style.maxWidth = Math.min(BASE_W, W / chosen) + 'px'
   }
 
+  // 현재 페이지 썸네일을 왼쪽 메뉴의 세로 중앙에 맞춘다
+  function centerSide(a, instant) {
+    var box = document.getElementById('side')
+    if (!box || !a) return
+    var target = a.offsetTop + a.offsetHeight / 2 - box.clientHeight / 2
+    if (box.scrollTo) box.scrollTo({ top: Math.max(0, target), behavior: instant ? 'auto' : 'smooth' })
+    else box.scrollTop = Math.max(0, target)
+  }
+
   function show(i, updateHash) {
     i = Math.max(0, Math.min(pages.length - 1, i))
     pages.forEach(function (p, k) {
@@ -186,7 +195,7 @@
     sideLinks.forEach(function (a, k) {
       if (k === i) {
         a.setAttribute('aria-current', 'true')
-        if (a.scrollIntoView) a.scrollIntoView({ block: 'nearest' })
+        centerSide(a)
       } else {
         a.removeAttribute('aria-current')
       }
@@ -373,4 +382,8 @@
 
   show(fromHash(), false)
   layoutThumbs()
+  centerSide(sideLinks[current], true)
+  window.addEventListener('load', function () {
+    centerSide(sideLinks[current], true)
+  })
 })()
