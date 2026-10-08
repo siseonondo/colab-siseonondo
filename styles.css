@@ -1771,3 +1771,184 @@ blockquote {
     gap: 10px;
   }
 }
+
+/* ---------- 글씨 크기 살짝 줄임 ---------- */
+.page-inner > h2 {
+  margin-bottom: 22px;
+  font-size: 32px;
+}
+
+.hero-title {
+  font-size: 50px;
+}
+
+.hero-lead {
+  font-size: 18px;
+}
+
+.page-inner h3 {
+  font-size: 18.5px;
+}
+
+.card p {
+  font-size: 16px;
+}
+
+.card-note {
+  font-size: 14px;
+}
+
+.callout p {
+  font-size: 16px;
+}
+
+.section-lead {
+  font-size: 15.5px;
+}
+
+.step p {
+  font-size: 15.5px;
+}
+
+.timeline li {
+  font-size: 14px;
+}
+
+.timeline li strong {
+  font-size: 17px;
+}
+
+.flow li strong {
+  font-size: 18px;
+}
+
+.flow li p {
+  font-size: 15.5px;
+}
+
+.plain-list strong {
+  font-size: 16.5px;
+}
+
+.plain-list span {
+  font-size: 15px;
+}
+
+.code {
+  font-size: 15px;
+}
+
+.output {
+  font-size: 15px;
+}
+
+.shortcut .shortcut-lead {
+  font-size: 24px;
+}
+
+.shortcut p {
+  font-size: 16px;
+}
+
+.keys kbd {
+  padding: 16px 26px;
+  font-size: 20px;
+}
+
+blockquote {
+  font-size: 21px;
+}
+
+.error-card strong {
+  font-size: 18.5px;
+}
+
+.error-card p {
+  font-size: 15.5px;
+}
+
+.recap-grid strong {
+  font-size: 18px;
+}
+
+.recap-grid span:not(.recap-emoji) {
+  font-size: 15px;
+}
+
+.branch p {
+  font-size: 15.5px;
+}
+
+.roadmap p {
+  font-size: 15.5px;
+}
+
+/* 휴대폰 크기 최종 지정 (위의 일반 크기보다 우선) */
+@media (max-width: 760px) {
+  .page-inner > h2 {
+    font-size: 24px;
+  }
+
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .hero-lead {
+    font-size: 16px;
+  }
+
+  .page-inner h3 {
+    font-size: 17px;
+  }
+
+  .card p,
+  .step p {
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+
+  .step h3 {
+    font-size: 16.5px;
+  }
+
+  .timeline li {
+    font-size: 13.5px;
+  }
+
+  .timeline li strong {
+    font-size: 16px;
+  }
+
+  .plain-list strong {
+    font-size: 16px;
+  }
+
+  .plain-list span {
+    font-size: 14.5px;
+  }
+
+  .callout p {
+    font-size: 14.5px;
+  }
+
+  .code,
+  .output {
+    font-size: 13px;
+  }
+
+  .card {
+    padding: 16px 18px;
+  }
+
+  .step {
+    padding: 14px 16px;
+  }
+
+  .card-grid-3 {
+    gap: 8px;
+  }
+
+  .card-grid-3 .card .code-mini {
+    margin-top: 8px;
+  }
+}

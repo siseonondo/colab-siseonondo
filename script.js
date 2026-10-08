@@ -54,7 +54,7 @@
   var tocList = document.getElementById('tocList')
   var MIN_ZOOM = 0.72
   var MIN_ZOOM_PHONE = 0.82
-  var MAX_ZOOM = 1.6
+  var MAX_ZOOM = 1.2
   var BASE_W = 1080
   var MIN_LOGICAL_W = 780
   var ALIASES = { practice: 'practice-1', top: 'intro' }
