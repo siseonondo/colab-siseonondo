@@ -2243,3 +2243,15 @@ blockquote {
     padding: 14px 0;
   }
 }
+
+/* AI 실습: 코드가 긴 화면은 코드 칸을 넓게 */
+.ai-wide {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+}
+.ai-wide .code code {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.js .page:focus {
+  outline: none;
+}
