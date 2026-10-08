@@ -235,6 +235,7 @@
       if (e.key === 'Escape') closeToc()
       return
     }
+    if (e.target && e.target.id === 'sideResizer') return
     var tag = (e.target && e.target.tagName) || ''
     if (tag === 'INPUT' || tag === 'TEXTAREA') return
     if (e.key === 'ArrowRight' || e.key === 'PageDown') {
@@ -287,6 +288,86 @@
     document.fonts.ready.then(function () {
       fit(pages[current])
       layoutThumbs()
+    })
+  }
+
+  // ---------- 왼쪽 메뉴 너비 조절 ----------
+  var side = document.getElementById('side')
+  var resizer = document.getElementById('sideResizer')
+  var STORE_KEY = 'colab_side_width'
+  var MIN_SIDE = 200
+
+  function maxSide() {
+    return Math.floor(window.innerWidth * 0.5)
+  }
+  function applySide(px, save) {
+    px = Math.max(MIN_SIDE, Math.min(maxSide(), Math.round(px)))
+    document.documentElement.style.setProperty('--side-w', px + 'px')
+    if (save) {
+      try {
+        localStorage.setItem(STORE_KEY, String(px))
+      } catch (e) {}
+    }
+    scheduleRelayout()
+  }
+  function resetSide() {
+    document.documentElement.style.removeProperty('--side-w')
+    try {
+      localStorage.removeItem(STORE_KEY)
+    } catch (e) {}
+    scheduleRelayout()
+  }
+  var relayoutQueued = false
+  function scheduleRelayout() {
+    if (relayoutQueued) return
+    relayoutQueued = true
+    requestAnimationFrame(function () {
+      relayoutQueued = false
+      fit(pages[current])
+      layoutThumbs()
+    })
+  }
+
+  try {
+    var saved = parseInt(localStorage.getItem(STORE_KEY), 10)
+    if (saved >= MIN_SIDE) applySide(saved, false)
+  } catch (e) {}
+
+  if (resizer) {
+    var dragging = false
+    resizer.addEventListener('pointerdown', function (e) {
+      dragging = true
+      document.body.classList.add('is-resizing')
+      try {
+        resizer.setPointerCapture(e.pointerId)
+      } catch (err) {}
+      e.preventDefault()
+    })
+    window.addEventListener('pointermove', function (e) {
+      if (!dragging) return
+      applySide(e.clientX - side.getBoundingClientRect().left, false)
+    })
+    function endDrag() {
+      if (!dragging) return
+      dragging = false
+      document.body.classList.remove('is-resizing')
+      applySide(side.getBoundingClientRect().width, true)
+    }
+    window.addEventListener('pointerup', endDrag)
+    window.addEventListener('pointercancel', endDrag)
+    resizer.addEventListener('dblclick', resetSide)
+    resizer.addEventListener('keydown', function (e) {
+      var w = side.getBoundingClientRect().width
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault()
+        applySide(w - 16, true)
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault()
+        applySide(w + 16, true)
+      } else if (e.key === 'Home' || e.key === 'Escape') {
+        e.preventDefault()
+        resetSide()
+      }
     })
   }
 
