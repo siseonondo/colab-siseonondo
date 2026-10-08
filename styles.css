@@ -2255,3 +2255,52 @@ blockquote {
 .js .page:focus {
   outline: none;
 }
+
+/* 대표 프로그래밍 언어 비교 */
+.card-grid-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+.lang-card {
+  padding: 18px 16px;
+}
+.lang-card h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.lang-card > p:not(.badge) {
+  margin: 0 0 10px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.lang-meta {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.lang-meta li {
+  margin-bottom: 6px;
+}
+.lang-meta b {
+  display: block;
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.lang-main {
+  border: 2px solid var(--accent);
+  background: var(--accent-soft);
+}
+@media (max-width: 1100px) {
+  .card-grid-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .card-grid-5 {
+    grid-template-columns: 1fr;
+  }
+}
