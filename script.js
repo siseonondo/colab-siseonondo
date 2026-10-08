@@ -149,7 +149,7 @@
     var inner = page.querySelector('.page-inner')
     if (!inner) return
     var W = stage.clientWidth
-    var H = stage.clientHeight
+    var H = stage.clientHeight - (stage.clientWidth > 700 ? 52 : 28)
     var wide = W > 760
     var maxZoom = wide ? Math.min(MAX_ZOOM, W / MIN_LOGICAL_W) : 1
     var minZ = wide ? MIN_ZOOM : MIN_ZOOM_PHONE
