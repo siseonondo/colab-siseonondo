@@ -2147,16 +2147,38 @@ blockquote {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 4px;
-  width: 2px;
-  background: var(--border-input);
+  left: 3.5px;
+  width: 3px;
+  background: #bfb5a3;
+  transition: background 0.15s;
+}
+
+/* 가운데 손잡이 막대 */
+.js .side-resizer::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 48px;
+  border-radius: 4px;
+  background: #8f8573;
+  transform: translate(-50%, -50%);
   transition: background 0.15s;
 }
 
 .js .side-resizer:hover::after,
+.js .side-resizer:hover::before,
 .js .side-resizer:focus-visible::after,
-.is-resizing .side-resizer::after {
+.js .side-resizer:focus-visible::before,
+.is-resizing .side-resizer::after,
+.is-resizing .side-resizer::before {
   background: var(--accent);
+}
+
+.js .side {
+  border-right: 0;
 }
 
 .is-resizing,
