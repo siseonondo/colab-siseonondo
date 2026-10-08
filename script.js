@@ -60,30 +60,48 @@
   var ALIASES = { practice: 'practice-1', top: 'intro' }
   var current = 0
 
-  // 왼쪽 메뉴: 진행 구간(타임라인)별로 묶어서 보여줍니다.
-  var GROUPS = [
-    { from: 0, label: '01 도입' },
-    { from: 2, label: '02 파이썬과 코랩' },
-    { from: 9, label: '03 코랩 사용법' },
-    { from: 11, label: '04 핵심 실습' },
-    { from: 17, label: '05 정리 및 응용' }
-  ]
+  // 왼쪽 메뉴: 파워포인트처럼 모든 페이지의 작은 미리보기를 보여줍니다.
+  var THUMB_BASE_W = 1000
   var sideList = document.getElementById('sideList')
   var sideLinks = []
+  var thumbs = []
   pages.forEach(function (page, i) {
-    GROUPS.forEach(function (g) {
-      if (g.from === i) {
-        var h = document.createElement('li')
-        h.className = 'side-group'
-        h.textContent = g.label
-        sideList.appendChild(h)
-      }
-    })
     var li = document.createElement('li')
+    li.className = 'side-item'
     var a = document.createElement('a')
     a.href = '#' + page.id
-    a.innerHTML = '<span class="side-num">' + (i + 1) + '</span><span></span>'
-    a.lastChild.textContent = page.dataset.title || page.id
+    a.setAttribute('aria-label', i + 1 + '번 페이지: ' + (page.dataset.title || page.id))
+    a.title = page.dataset.title || ''
+
+    var num = document.createElement('span')
+    num.className = 'side-num'
+    num.textContent = String(i + 1)
+
+    var box = document.createElement('span')
+    box.className = 'side-thumb'
+    box.setAttribute('aria-hidden', 'true')
+    var clone = page.querySelector('.page-inner').cloneNode(true)
+    clone.removeAttribute('id')
+    clone.style.zoom = ''
+    clone.style.maxWidth = ''
+    clone.querySelectorAll('[id]').forEach(function (el) {
+      el.removeAttribute('id')
+    })
+    clone.querySelectorAll('[data-copy-target]').forEach(function (el) {
+      el.removeAttribute('data-copy-target')
+    })
+    clone.querySelectorAll('a, button').forEach(function (el) {
+      var plain = document.createElement('span')
+      plain.className = el.className
+      plain.innerHTML = el.innerHTML
+      el.replaceWith(plain)
+    })
+    clone.classList.add('thumb-inner')
+    clone.setAttribute('inert', '')
+    box.appendChild(clone)
+
+    a.appendChild(num)
+    a.appendChild(box)
     a.addEventListener('click', function (e) {
       e.preventDefault()
       show(i, true)
@@ -91,7 +109,23 @@
     li.appendChild(a)
     sideList.appendChild(li)
     sideLinks.push(a)
+    thumbs.push({ box: box, clone: clone })
   })
+
+  function layoutThumbs() {
+    thumbs.forEach(function (t) {
+      var bw = t.box.clientWidth
+      var bh = t.box.clientHeight
+      if (!bw || !bh) return
+      t.clone.style.transform = 'none'
+      t.clone.style.width = THUMB_BASE_W + 'px'
+      var h = t.clone.offsetHeight
+      var s = Math.min(bw / THUMB_BASE_W, bh / h)
+      var tx = (bw - THUMB_BASE_W * s) / 2
+      var ty = (bh - h * s) / 2
+      t.clone.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')'
+    })
+  }
 
   // 목차 만들기
   var tocLinks = pages.map(function (page, i) {
@@ -247,12 +281,15 @@
   })
   window.addEventListener('resize', function () {
     fit(pages[current])
+    layoutThumbs()
   })
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function () {
       fit(pages[current])
+      layoutThumbs()
     })
   }
 
   show(fromHash(), false)
+  layoutThumbs()
 })()
