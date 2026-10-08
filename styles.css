@@ -1952,3 +1952,84 @@ blockquote {
     margin-top: 8px;
   }
 }
+
+/* ---------- 왼쪽 메뉴 ---------- */
+.side {
+  display: none;
+}
+
+.js .workspace {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.js .side {
+  display: block;
+  flex-shrink: 0;
+  width: 248px;
+  overflow-y: auto;
+  padding: 14px 12px 18px;
+  border-right: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+
+.side-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.side-group {
+  margin: 14px 8px 4px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.side-group:first-child {
+  margin-top: 4px;
+}
+
+.side-list a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.side-list a:hover {
+  background: var(--card-bg);
+  color: var(--ink);
+}
+
+.side-list a[aria-current='true'] {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.side-num {
+  min-width: 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+@media (min-width: 1001px) {
+  .js .toc-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .js .side {
+    display: none;
+  }
+}

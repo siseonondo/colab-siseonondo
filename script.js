@@ -60,6 +60,39 @@
   var ALIASES = { practice: 'practice-1', top: 'intro' }
   var current = 0
 
+  // 왼쪽 메뉴: 진행 구간(타임라인)별로 묶어서 보여줍니다.
+  var GROUPS = [
+    { from: 0, label: '01 도입' },
+    { from: 2, label: '02 파이썬과 코랩' },
+    { from: 9, label: '03 코랩 사용법' },
+    { from: 11, label: '04 핵심 실습' },
+    { from: 17, label: '05 정리 및 응용' }
+  ]
+  var sideList = document.getElementById('sideList')
+  var sideLinks = []
+  pages.forEach(function (page, i) {
+    GROUPS.forEach(function (g) {
+      if (g.from === i) {
+        var h = document.createElement('li')
+        h.className = 'side-group'
+        h.textContent = g.label
+        sideList.appendChild(h)
+      }
+    })
+    var li = document.createElement('li')
+    var a = document.createElement('a')
+    a.href = '#' + page.id
+    a.innerHTML = '<span class="side-num">' + (i + 1) + '</span><span></span>'
+    a.lastChild.textContent = page.dataset.title || page.id
+    a.addEventListener('click', function (e) {
+      e.preventDefault()
+      show(i, true)
+    })
+    li.appendChild(a)
+    sideList.appendChild(li)
+    sideLinks.push(a)
+  })
+
   // 목차 만들기
   var tocLinks = pages.map(function (page, i) {
     var li = document.createElement('li')
@@ -115,6 +148,14 @@
     tocLinks.forEach(function (a, k) {
       if (k === i) a.setAttribute('aria-current', 'true')
       else a.removeAttribute('aria-current')
+    })
+    sideLinks.forEach(function (a, k) {
+      if (k === i) {
+        a.setAttribute('aria-current', 'true')
+        if (a.scrollIntoView) a.scrollIntoView({ block: 'nearest' })
+      } else {
+        a.removeAttribute('aria-current')
+      }
     })
     if (updateHash && history.replaceState) {
       history.replaceState(null, '', i === 0 ? location.pathname + location.search : '#' + page.id)
