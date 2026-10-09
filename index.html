@@ -696,38 +696,157 @@
       </section>
 
       <!-- AI 1 -->
-      <section id="ai-why" class="page" data-title="AI 실습 · 왜 키가 필요한가">
+      <section id="ai-1" class="page" data-title="AI 실습 1 · 프롬프트 템플릿">
         <div class="page-inner">
-          <p class="eyebrow">AI PRACTICE · INTRO</p>
-          <h2>코드로 AI를 부르려면, 왜 키가 필요할까요?</h2>
-          <div class="card-grid card-grid-3">
-            <article class="card">
-              <p class="eyebrow eyebrow-blue">지금까지</p>
-              <h3>채팅창에서 손으로</h3>
-              <p>한 번에 하나씩 쓰고, 결과를 눈으로 비교하고, 프롬프트는 어디엔가 복사해 둡니다.</p>
-            </article>
-            <article class="card">
-              <p class="eyebrow eyebrow-blue">코드로 부르면</p>
-              <h3>저장·반복·비교가 자동</h3>
-              <p>프롬프트를 변수로 저장하고, for로 여러 입력에 돌려 결과를 한 번에 비교합니다.</p>
-            </article>
-            <article class="card card-key">
-              <p class="eyebrow eyebrow-blue">그런데 필요한 것</p>
-              <h3>AI 서버의 출입증, 키</h3>
-              <p>코드는 내 대신 구글 서버에 요청합니다. 서버는 &ldquo;누가 보낸 요청인지&rdquo; 키로 확인하고 무료 사용량도 키별로 관리합니다.</p>
-            </article>
-          </div>
-          <div class="callout callout-soft">
-            <strong>흐름 한 줄</strong>
-            <p>코랩의 내 코드 → (키를 보여 주고) 요청 → Gemini 서버 → 답변이 코랩으로 돌아옵니다. 그래서 먼저 키를 받아 둡니다.</p>
+          <p class="eyebrow">AI PRACTICE 01</p>
+          <h2>실습 1: 프롬프트를 변수에 저장하고 빈칸 채우기</h2>
+          <div class="split practice">
+            <div class="notebook notebook-small">
+              <div class="cell">
+                <div class="cell-head">
+                  <span class="cell-label">코랩 실제 입력창 [1]</span>
+                  <button class="copy-btn" type="button" data-copy-target="code-ai-1">코드 복사</button>
+                </div>
+                <pre class="code"><code id="code-ai-1">템플릿 = <span class="str">"{주제}를 {독자}에게 설명하는 한 문장을 써줘."</span>
+
+프롬프트 = 템플릿.<span class="fn">format</span>(주제=<span class="str">"프롬프트"</span>, 독자=<span class="str">"초등학생"</span>)
+<span class="fn">print</span>(프롬프트)</code></pre>
+              </div>
+              <div class="output"><span class="out-label">실행 결과 (Output)</span>프롬프트를 초등학생에게 설명하는 한 문장을 써줘.</div>
+            </div>
+            <div>
+              <p class="eyebrow">프롬프트를 코드로 저장하면</p>
+              <ul class="plain-list">
+                <li><strong>문자열 변수에 담아 두기</strong><span>자주 쓰는 프롬프트를 <code>템플릿</code> 변수에 저장해 두면 언제든 꺼내 쓸 수 있어요.</span></li>
+                <li><strong>{} 자리에 값을 바꿔 끼우기</strong><span><code>.format(주제=..., 독자=...)</code>로 같은 틀에 다른 내용을 넣습니다.</span></li>
+                <li><strong>독자를 바꿔 다시 실행해 보세요</strong><span>"초등학생"을 "신입사원"으로 바꾸면 완성되는 문장이 달라집니다. 완성된 문장을 Gemini 채팅창에 붙여 넣어 써 보세요.</span></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="ai-key" class="page" data-title="AI 실습 · 키 발급">
+      <!-- AI 2 -->
+      <section id="ai-2" class="page" data-title="AI 실습 2 · A/B 프롬프트">
         <div class="page-inner">
-          <p class="eyebrow">AI PRACTICE 00</p>
-          <h2>먼저 준비: 제미나이(Gemini) 키 받기</h2>
+          <p class="eyebrow">AI PRACTICE 02</p>
+          <h2>실습 2: 프롬프트 A/B를 여러 입력으로 한 번에 만들기</h2>
+          <div class="split practice ai-wide">
+            <div class="notebook notebook-small">
+              <div class="cell">
+                <div class="cell-head">
+                  <span class="cell-label">코랩 실제 입력창 [2]</span>
+                  <button class="copy-btn" type="button" data-copy-target="code-ai-2">코드 복사</button>
+                </div>
+                <pre class="code"><code id="code-ai-2">프롬프트_A = <span class="str">"다음 글을 요약해줘.\n\n{글}"</span>
+프롬프트_B = <span class="str">"너는 편집자야. 30자 이내 한 문장으로 요약해줘.\n\n{글}"</span>
+
+글목록 = [
+    <span class="str">"코랩은 브라우저에서 쓰는 무료 파이썬 노트북이다."</span>,
+    <span class="str">"프롬프트에 조건을 구체적으로 적으면 답변이 안정된다."</span>,
+    <span class="str">"회의 전에 안건을 공유하고 결론을 기록해야 한다."</span>,
+]
+
+<span class="kw">for</span> 글 <span class="kw">in</span> 글목록:
+    <span class="fn">print</span>(<span class="str">"A:"</span>, 프롬프트_A.<span class="fn">format</span>(글=글))
+    <span class="fn">print</span>(<span class="str">"B:"</span>, 프롬프트_B.<span class="fn">format</span>(글=글))
+    <span class="fn">print</span>(<span class="str">"-----"</span>)</code></pre>
+              </div>
+              <div class="output"><span class="out-label">실행 결과 (Output)</span>A: 다음 글을 요약해줘.<br /><br />코랩은 브라우저에서 쓰는 무료 파이썬 노트북이다.<br />B: 너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />코랩은 브라우저에서 …</div>
+            </div>
+            <div>
+              <p class="eyebrow">같은 입력, 다른 프롬프트</p>
+              <ul class="plain-list">
+                <li><strong>A는 단순한 지시, B는 조건을 준 지시</strong><span>역할 · 글자 수 · 형식을 더하면 달라지는지 비교해 봅니다.</span></li>
+                <li><strong>for로 프롬프트 6개를 한 번에</strong><span>글 3개 × 프롬프트 2종을 반복문이 순식간에 만들어 줍니다.</span></li>
+                <li><strong>채팅창에 붙여 넣어 비교하기</strong><span>A와 B를 Gemini 채팅창에 각각 붙여 넣고 어느 쪽 답이 나은지 골라 두세요. 다음 실습에서 저장합니다.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI 3 -->
+      <section id="ai-3" class="page" data-title="AI 실습 3 · 내 라이브러리">
+        <div class="page-inner">
+          <p class="eyebrow">AI PRACTICE 03</p>
+          <h2>실습 3: 마음에 든 프롬프트를 내 라이브러리에 저장하기</h2>
+          <div class="split practice ai-wide">
+            <div class="notebook notebook-small">
+              <div class="cell">
+                <div class="cell-head">
+                  <span class="cell-label">코랩 실제 입력창 [3]</span>
+                  <button class="copy-btn" type="button" data-copy-target="code-ai-3">코드 복사</button>
+                </div>
+                <pre class="code"><code id="code-ai-3"><span class="kw">from</span> google.colab <span class="kw">import</span> drive
+<span class="kw">import</span> json
+drive.<span class="fn">mount</span>(<span class="str">"/content/drive"</span>)
+
+경로 = <span class="str">"/content/drive/MyDrive/내_프롬프트.json"</span>
+라이브러리 = {<span class="str">"요약_B"</span>: 프롬프트_B}  <span class="cm"># 이름 붙여 저장</span>
+
+<span class="kw">with</span> <span class="fn">open</span>(경로, <span class="str">"w"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> f:
+    json.<span class="fn">dump</span>(라이브러리, f, ensure_ascii=False)
+
+<span class="kw">with</span> <span class="fn">open</span>(경로, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> f:  <span class="cm"># 다시 불러오기</span>
+    불러온 = json.<span class="fn">load</span>(f)
+<span class="fn">print</span>(불러온[<span class="str">"요약_B"</span>].<span class="fn">format</span>(글=글목록[0]))</code></pre>
+              </div>
+              <div class="output"><span class="out-label">실행 결과 (Output)</span>너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />코랩은 브라우저에서 쓰는 무료 파이썬 노트북이다.</div>
+            </div>
+            <div>
+              <p class="eyebrow">구글 드라이브에 보관하면</p>
+              <ul class="plain-list">
+                <li><strong>세션이 끝나도 남아요</strong><span>코랩 임시 공간은 사라지지만 내 드라이브의 파일은 그대로입니다.</span></li>
+                <li><strong>이름으로 불러 쓰기</strong><span>딕셔너리의 이름(<code>"요약_B"</code>)으로 꺼내 <code>.format()</code>만 하면 끝.</span></li>
+                <li><strong>내 업무 프롬프트를 추가해 보세요</strong><span>자주 쓰는 프롬프트를 이름 붙여 쌓으면 나만의 프롬프트 라이브러리가 됩니다.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            <strong>한 줄 정리</strong>
+            <p>프롬프트를 변수로 저장하고 → 여러 입력으로 만들어 비교하고 → 좋은 것만 이름 붙여 보관합니다. 여기까지는 키가 필요 없어요.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI 4 -->
+      <section id="ai-why" class="page" data-title="참고 · 키가 필요한 때">
+        <div class="page-inner">
+          <p class="eyebrow">GUIDE · API KEY</p>
+          <h2>참고: 키는 &ldquo;코드가 AI에게 직접 물을 때&rdquo;만 필요해요</h2>
+          <div class="split">
+            <article class="card">
+              <p class="badge badge-green">키 없이 가능</p>
+              <h3>오늘 실습 1~3</h3>
+              <ul class="plain-list">
+                <li><strong>프롬프트 저장·빈칸 채우기</strong><span>파이썬 안에서만 일어나는 일</span></li>
+                <li><strong>for로 여러 개 만들기</strong><span>코랩 안에서 끝나는 일</span></li>
+                <li><strong>구글 드라이브에 보관</strong><span>내 구글 계정으로 연결</span></li>
+              </ul>
+            </article>
+            <article class="card card-key">
+              <p class="badge">키 필요</p>
+              <h3>코드가 AI에게 직접 질문</h3>
+              <ul class="plain-list">
+                <li><strong>답변을 코드로 받아 오기</strong><span>Gemini 서버에 요청을 보내는 일</span></li>
+                <li><strong>수십 개를 자동으로 돌리기</strong><span>복사·붙여넣기 없이 결과까지 한 번에</span></li>
+                <li><strong>답변을 표나 파일로 저장</strong><span>결과를 코드로 이어서 가공</span></li>
+              </ul>
+            </article>
+          </div>
+          <div class="callout callout-soft">
+            <strong>호텔 카드키로 이해하세요</strong>
+            <p>Gemini는 큰 호텔, 키는 카드키입니다. 채팅창은 내 로그인으로 들어가고, 코드가 직접 들어가려면 카드키가 필요합니다. 필요해지면 다음 두 페이지를 보세요.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI 5 -->
+      <section id="ai-key" class="page" data-title="참고 · 키 받기">
+        <div class="page-inner">
+          <p class="eyebrow">GUIDE · API KEY</p>
+          <h2>참고: 제미나이(Gemini) 키 받기 (필요할 때만)</h2>
           <ol class="steps">
             <li class="step">
               <span class="step-num">1</span>
@@ -758,11 +877,11 @@
         </div>
       </section>
 
-      <!-- AI 2 -->
-      <section id="ai-secret" class="page" data-title="AI 실습 · 키 넣기">
+      <!-- AI 6 -->
+      <section id="ai-secret" class="page" data-title="참고 · 키 넣기">
         <div class="page-inner">
-          <p class="eyebrow">AI PRACTICE 01</p>
-          <h2>코랩에 키를 안전하게 넣고 연결하기</h2>
+          <p class="eyebrow">GUIDE · API KEY</p>
+          <h2>참고: 코랩에 키를 안전하게 넣고 연결하기</h2>
           <div class="split practice">
             <div>
               <p class="eyebrow">코랩 왼쪽 🔑 보안 비밀</p>
@@ -793,122 +912,6 @@ MODEL = <span class="str">"gemini-2.5-flash"</span>
               </div>
               <div class="output"><span class="out-label">실행 결과 (예시 · 매번 조금씩 달라요)</span>안녕하세요! 만나서 반갑습니다.</div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- AI 3 -->
-      <section id="ai-1" class="page" data-title="AI 실습 1 · 프롬프트 저장">
-        <div class="page-inner">
-          <p class="eyebrow">AI PRACTICE 02</p>
-          <h2>실습 1: 프롬프트를 변수에 저장하고 실행하기</h2>
-          <div class="split practice">
-            <div class="notebook notebook-small">
-              <div class="cell">
-                <div class="cell-head">
-                  <span class="cell-label">코랩 실제 입력창 [2]</span>
-                  <button class="copy-btn" type="button" data-copy-target="code-ai-2">코드 복사</button>
-                </div>
-                <pre class="code"><code id="code-ai-2">템플릿 = <span class="str">"{주제}를 {독자}에게 설명하는 한 문장을 써줘."</span>
-
-프롬프트 = 템플릿.<span class="fn">format</span>(주제=<span class="str">"프롬프트"</span>, 독자=<span class="str">"초등학생"</span>)
-<span class="fn">print</span>(프롬프트)
-<span class="fn">print</span>(<span class="fn">ask</span>(프롬프트))</code></pre>
-              </div>
-              <div class="output"><span class="out-label">실행 결과 (예시 · 매번 조금씩 달라요)</span>프롬프트를 초등학생에게 설명하는 한 문장을 써줘.<br />프롬프트는 AI에게 "이렇게 해줘"라고 알려 주는 말이에요.</div>
-            </div>
-            <div>
-              <p class="eyebrow">프롬프트를 코드로 저장하면</p>
-              <ul class="plain-list">
-                <li><strong>문자열 변수에 담아 두기</strong><span>프롬프트를 <code>템플릿</code> 변수에 저장해 두면 언제든 다시 꺼내 쓸 수 있어요.</span></li>
-                <li><strong>{} 자리에 값을 바꿔 끼우기</strong><span><code>.format(주제=..., 독자=...)</code>로 같은 틀에 다른 내용을 넣습니다.</span></li>
-                <li><strong>독자를 바꿔 다시 실행해 보세요</strong><span>"초등학생"을 "신입사원"으로 바꾸면 답변의 말투가 달라집니다.</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- AI 4 -->
-      <section id="ai-2" class="page" data-title="AI 실습 2 · A/B 비교">
-        <div class="page-inner">
-          <p class="eyebrow">AI PRACTICE 03</p>
-          <h2>실습 2: 프롬프트 A/B 비교 실험</h2>
-          <div class="split practice ai-wide">
-            <div class="notebook notebook-small">
-              <div class="cell">
-                <div class="cell-head">
-                  <span class="cell-label">코랩 실제 입력창 [3]</span>
-                  <button class="copy-btn" type="button" data-copy-target="code-ai-3">코드 복사</button>
-                </div>
-                <pre class="code"><code id="code-ai-3">프롬프트_A = <span class="str">"{글}을 요약해줘."</span>
-프롬프트_B = <span class="str">"너는 편집자야. 30자 이내 한 문장으로 요약해줘.\n\n{글}"</span>
-
-글목록 = [
-    <span class="str">"코랩은 브라우저에서 쓰는 무료 파이썬 노트북이다."</span>,
-    <span class="str">"프롬프트에 조건을 구체적으로 적으면 답변이 안정된다."</span>,
-    <span class="str">"회의 전에 안건을 공유하고 결론을 기록해야 한다."</span>,
-]
-
-<span class="kw">for</span> 글 <span class="kw">in</span> 글목록:
-    <span class="fn">print</span>(<span class="str">"A:"</span>, <span class="fn">ask</span>(프롬프트_A.<span class="fn">format</span>(글=글)))
-    <span class="fn">print</span>(<span class="str">"B:"</span>, <span class="fn">ask</span>(프롬프트_B.<span class="fn">format</span>(글=글)))
-    <span class="fn">print</span>(<span class="str">"-----"</span>)</code></pre>
-              </div>
-              <div class="output"><span class="out-label">실행 결과 (예시 · 매번 조금씩 달라요)</span>A: 코랩은 브라우저에서 쓰는 무료 파이썬 노트북 서비스로, 설치 없이 코드를 실행할 수 있다는 내용입니다. …<br />B: 브라우저에서 쓰는 무료 파이썬 노트북.<br />-----</div>
-            </div>
-            <div>
-              <p class="eyebrow">같은 입력, 다른 프롬프트</p>
-              <ul class="plain-list">
-                <li><strong>A는 단순한 지시, B는 조건을 준 지시</strong><span>역할 · 글자 수 · 형식을 더하면 결과가 얼마나 달라지는지 비교합니다.</span></li>
-                <li><strong>입력 3개로 돌리면 우연이 줄어요</strong><span>한 번만 보면 운일 수 있어요. 반복문으로 같은 조건에서 여러 번 확인합니다.</span></li>
-                <li><strong>어느 쪽이 나은지 직접 판단하기</strong><span>이 답변 기준으로 A와 B 중 마음에 드는 쪽을 골라 두세요. 다음 실습에서 저장합니다.</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- AI 5 -->
-      <section id="ai-3" class="page" data-title="AI 실습 3 · 내 라이브러리">
-        <div class="page-inner">
-          <p class="eyebrow">AI PRACTICE 04</p>
-          <h2>실습 3: 마음에 든 프롬프트를 내 라이브러리에 저장하기</h2>
-          <div class="split practice ai-wide">
-            <div class="notebook notebook-small">
-              <div class="cell">
-                <div class="cell-head">
-                  <span class="cell-label">코랩 실제 입력창 [4]</span>
-                  <button class="copy-btn" type="button" data-copy-target="code-ai-4">코드 복사</button>
-                </div>
-                <pre class="code"><code id="code-ai-4"><span class="kw">from</span> google.colab <span class="kw">import</span> drive
-<span class="kw">import</span> json
-drive.<span class="fn">mount</span>(<span class="str">"/content/drive"</span>)
-
-경로 = <span class="str">"/content/drive/MyDrive/내_프롬프트.json"</span>
-라이브러리 = {<span class="str">"요약_B"</span>: 프롬프트_B}  <span class="cm"># 이름 붙여 저장</span>
-
-<span class="kw">with</span> <span class="fn">open</span>(경로, <span class="str">"w"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> f:
-    json.<span class="fn">dump</span>(라이브러리, f, ensure_ascii=False)
-
-<span class="kw">with</span> <span class="fn">open</span>(경로, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> f:  <span class="cm"># 다시 불러오기</span>
-    불러온 = json.<span class="fn">load</span>(f)
-<span class="fn">print</span>(<span class="fn">ask</span>(불러온[<span class="str">"요약_B"</span>].<span class="fn">format</span>(글=글목록[0])))</code></pre>
-              </div>
-              <div class="output"><span class="out-label">실행 결과 (예시 · 매번 조금씩 달라요)</span>브라우저에서 쓰는 무료 파이썬 노트북.</div>
-            </div>
-            <div>
-              <p class="eyebrow">구글 드라이브에 보관하면</p>
-              <ul class="plain-list">
-                <li><strong>세션이 끝나도 남아요</strong><span>코랩 임시 공간은 사라지지만 내 드라이브의 파일은 그대로입니다.</span></li>
-                <li><strong>이름으로 불러 쓰기</strong><span>딕셔너리의 이름(<code>"요약_B"</code>)으로 꺼내 <code>.format()</code>만 하면 끝.</span></li>
-                <li><strong>내 업무 프롬프트를 추가해 보세요</strong><span>자주 쓰는 프롬프트를 이름 붙여 쌓으면 나만의 프롬프트 라이브러리가 됩니다.</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="callout">
-            <strong>한 줄 정리</strong>
-            <p>프롬프트를 변수로 저장하고 → 여러 입력으로 비교하고 → 좋은 것만 이름 붙여 보관하면, 감이 아니라 기록으로 프롬프트가 좋아집니다.</p>
           </div>
         </div>
       </section>
