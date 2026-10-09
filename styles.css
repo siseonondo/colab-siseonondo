@@ -2309,3 +2309,31 @@ blockquote {
   border: 2px solid var(--accent);
   background: var(--accent-soft);
 }
+
+/* 괄호 한눈에 보기 */
+.sym-big {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+.sym-card .code-mini code {
+  white-space: pre-wrap;
+}
+.sym-where {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.sym-card p.sym-big {
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.sym-card p.sym-where {
+  font-size: 13.5px;
+  color: var(--muted);
+}
