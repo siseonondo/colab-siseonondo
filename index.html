@@ -872,7 +872,7 @@ drive.<span class="fn">mount</span>(<span class="str">"/content/drive"</span>)
           </div>
           <div class="callout callout-soft">
             <strong>호텔 카드키로 이해하세요</strong>
-            <p>Gemini는 큰 호텔, 키는 카드키입니다. 채팅창은 내 로그인으로 들어가고, 코드가 직접 들어가려면 카드키가 필요합니다. 필요해지면 다음 두 페이지를 보세요.</p>
+            <p>Gemini는 큰 호텔, 키는 카드키입니다. 채팅창은 내 로그인으로 들어가고, 코드가 직접 들어가려면 카드키가 필요합니다. 필요해지면 다음 세 페이지를 보세요.</p>
           </div>
         </div>
       </section>
@@ -917,36 +917,77 @@ drive.<span class="fn">mount</span>(<span class="str">"/content/drive"</span>)
         <div class="page-inner">
           <p class="eyebrow">GUIDE · API KEY</p>
           <h2>참고: 코랩에 키를 안전하게 넣고 연결하기</h2>
-          <div class="split practice">
+          <div class="split practice ai-wrap">
             <div>
               <p class="eyebrow">코랩 왼쪽 🔑 보안 비밀</p>
               <ul class="plain-list">
                 <li><strong>1. 왼쪽 열쇠(🔑) 아이콘 클릭</strong><span>[보안 비밀(Secrets)] 창이 열립니다.</span></li>
                 <li><strong>2. [새 보안 비밀 추가]</strong><span>이름에 <code>GEMINI_API_KEY</code>, 값에 방금 복사한 키를 붙여 넣습니다.</span></li>
                 <li><strong>3. [노트북 액세스]를 켜기</strong><span>스위치를 켜야 코드에서 키를 읽을 수 있어요. 코드에는 키가 남지 않습니다.</span></li>
-                <li><strong>4. 오른쪽 셀을 실행</strong><span>인사말이 출력되면 연결 성공입니다.</span></li>
+                <li><strong>4. 오른쪽 셀을 실행</strong><span>인사말이 출력되면 연결 성공. 빨간 503이 나오면 서버가 바쁜 것이니 잠시 후 다시 실행하세요.</span></li>
               </ul>
             </div>
             <div class="notebook notebook-small">
               <div class="cell">
                 <div class="cell-head">
                   <span class="cell-label">코랩 실제 입력창 [1] · 연결 준비</span>
-                  <button class="copy-btn" type="button" data-copy-target="code-ai-1">코드 복사</button>
+                  <button class="copy-btn" type="button" data-copy-target="code-key-setup">코드 복사</button>
                 </div>
-                <pre class="code"><code id="code-ai-1">!pip install -q google-genai
+                <pre class="code"><code id="code-key-setup"><span class="kw">import</span> time
+!pip install -q google-genai
 <span class="kw">from</span> google.colab <span class="kw">import</span> userdata
 <span class="kw">from</span> google <span class="kw">import</span> genai
 
 client = genai.<span class="fn">Client</span>(api_key=userdata.<span class="fn">get</span>(<span class="str">"GEMINI_API_KEY"</span>))
-MODEL = <span class="str">"gemini-2.5-flash"</span>
+MODEL = <span class="str">"gemini-3.8-flash"</span>
 
 <span class="kw">def</span> <span class="fn">ask</span>(prompt):
-    <span class="kw">return</span> client.models.<span class="fn">generate_content</span>(model=MODEL, contents=prompt).text
+    <span class="kw">for</span> 시도 <span class="kw">in</span> <span class="fn">range</span>(4):
+        <span class="kw">try</span>:
+            <span class="kw">return</span> client.models.<span class="fn">generate_content</span>(model=MODEL, contents=prompt).text
+        <span class="kw">except</span> Exception:
+            time.<span class="fn">sleep</span>(5)
+    <span class="kw">return</span> <span class="str">"(응답을 받지 못했어요. 잠시 후 다시 실행해 보세요)"</span>
 
 <span class="fn">print</span>(<span class="fn">ask</span>(<span class="str">"안녕! 한 문장으로 인사해줘."</span>))</code></pre>
               </div>
               <div class="output"><span class="out-label">실행 결과 (예시 · 매번 조금씩 달라요)</span>안녕하세요! 만나서 반갑습니다.</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI 7 -->
+      <section id="ai-demo" class="page" data-title="키를 넣으면 달라져요">
+        <div class="page-inner">
+          <p class="eyebrow">WITH THE KEY</p>
+          <h2>키를 넣으면 달라져요: 주문서가 답변이 됩니다</h2>
+          <div class="split practice ai-wide">
+            <div class="notebook notebook-small">
+              <div class="cell">
+                <div class="cell-head">
+                  <span class="cell-label">코랩 실제 입력창 · 23번의 반복문을 이렇게 바꿔요</span>
+                  <button class="copy-btn" type="button" data-copy-target="code-ai-demo">코드 복사</button>
+                </div>
+                <pre class="code"><code id="code-ai-demo"><span class="kw">for</span> 글 <span class="kw">in</span> 글목록:
+    <span class="fn">print</span>(<span class="str">"A:"</span>, <span class="fn">ask</span>(프롬프트_A.<span class="fn">format</span>(글=글)))
+    <span class="fn">print</span>(<span class="str">"B:"</span>, <span class="fn">ask</span>(프롬프트_B.<span class="fn">format</span>(글=글)))
+    <span class="fn">print</span>(<span class="str">"-----"</span>)</code></pre>
+              </div>
+              <div class="output"><span class="out-label">실행 결과 (예시 · 매번 조금씩 달라요)</span>A: 구글 코랩은 설치 없이 브라우저에서 바로 사용할 수 있는 무료 파이썬 서비스입니다.<br />B: 구글 코랩은 설치 없이 쓰는 무료 파이썬 서비스다.<br />-----</div>
+            </div>
+            <div>
+              <p class="eyebrow">바뀐 점은 딱 하나</p>
+              <ul class="plain-list">
+                <li><strong>키 없이: 주문서만 보여요</strong><span><code>print(프롬프트_A.format(글=글))</code> → 완성된 프롬프트 문장이 찍힙니다.</span></li>
+                <li><strong>키 있으면: AI의 답이 와요</strong><span><code>print(ask(프롬프트_A.format(글=글)))</code> → 주문서를 AI에게 보내 요약 결과가 찍힙니다.</span></li>
+                <li><strong>A와 B의 차이가 보여요</strong><span>A는 길고 설명이 붙고, B는 짧고 군더더기가 없어요. <code>30자</code>를 <code>10자</code>로 바꿔 다시 실행해 보세요.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-soft">
+            <strong>먼저 이전 페이지의 연결 셀을 실행해 두세요</strong>
+            <p>연결 셀(<code>ask</code> 함수)과 23번의 <code>프롬프트_A·B</code>, <code>글목록</code> 셀을 먼저 실행한 뒤 이 반복문을 돌립니다.</p>
           </div>
         </div>
       </section>
