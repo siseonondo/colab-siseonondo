@@ -2304,3 +2304,8 @@ blockquote {
     grid-template-columns: 1fr;
   }
 }
+
+.card-key {
+  border: 2px solid var(--accent);
+  background: var(--accent-soft);
+}
