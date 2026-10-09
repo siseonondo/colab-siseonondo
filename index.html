@@ -777,9 +777,9 @@
 프롬프트_B = <span class="str">"너는 편집자야. 30자 이내 한 문장으로 요약해줘.\n\n{글}"</span>
 
 글목록 = [
-    <span class="str">"코랩은 브라우저에서 쓰는 무료 파이썬 노트북이다."</span>,
-    <span class="str">"프롬프트에 조건을 구체적으로 적으면 답변이 안정된다."</span>,
-    <span class="str">"회의 전에 안건을 공유하고 결론을 기록해야 한다."</span>,
+    <span class="str">"구글 코랩은 설치 없이 브라우저에서 파이썬을 실행할 수 있는 무료 노트북 서비스다."</span>,
+    <span class="str">"프롬프트에 역할과 글자 수 같은 조건을 구체적으로 적으면 AI 답변의 품질이 안정된다."</span>,
+    <span class="str">"회의 시간을 줄이려면 안건을 미리 공유하고, 회의 후 결론과 담당자를 반드시 기록해야 한다."</span>,
 ]
 
 <span class="kw">for</span> 글 <span class="kw">in</span> 글목록:
@@ -787,7 +787,7 @@
     <span class="fn">print</span>(<span class="str">"B:"</span>, 프롬프트_B.<span class="fn">format</span>(글=글))
     <span class="fn">print</span>(<span class="str">"-----"</span>)</code></pre>
               </div>
-              <div class="output"><span class="out-label">실행 결과 (Output)</span>A: 다음 글을 요약해줘.<br /><br />코랩은 브라우저에서 쓰는 무료 파이썬 노트북이다.<br />B: 너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />코랩은 브라우저에서 …</div>
+              <div class="output"><span class="out-label">실행 결과 (Output)</span>A: 다음 글을 요약해줘.<br /><br />구글 코랩은 설치 없이 …<br />B: 너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 …</div>
             </div>
             <div>
               <p class="eyebrow">같은 입력, 다른 프롬프트</p>
@@ -827,7 +827,7 @@ drive.<span class="fn">mount</span>(<span class="str">"/content/drive"</span>)
     불러온 = json.<span class="fn">load</span>(f)
 <span class="fn">print</span>(불러온[<span class="str">"요약_B"</span>].<span class="fn">format</span>(글=글목록[0]))</code></pre>
               </div>
-              <div class="output"><span class="out-label">실행 결과 (Output)</span>너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />코랩은 브라우저에서 쓰는 무료 파이썬 노트북이다.</div>
+              <div class="output"><span class="out-label">실행 결과 (Output)</span>너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 브라우저에서 파이썬을 실행할 수 있는 무료 노트북 서비스다.</div>
             </div>
             <div>
               <p class="eyebrow">구글 드라이브에 보관하면</p>
