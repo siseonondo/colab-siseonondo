@@ -95,7 +95,7 @@
               파이썬과 구글 코랩<br />
               <span>첫걸음 기초 완성</span>
             </h1>
-            <p class="hero-lead">웹 브라우저 하나로 데이터 분석부터 자동화까지 배우는 실습 중심 가이드</p>
+            <p class="hero-lead">웹 브라우저 하나로 파이썬을 배우고, 프롬프트를 코드로 다루는 실습 중심 가이드</p>
             <div class="hero-chips">
               <span class="chip">Google Colab</span>
               <span class="chip">Python 3</span>
@@ -129,32 +129,32 @@
             <li>
               <span class="step-no">구간 01</span>
               <strong>도입</strong>
-              <span>목표 공유 및 동기 부여</span>
+              <span>언어 소개, 코랩과 로컬의 차이</span>
             </li>
             <li>
               <span class="step-no">구간 02</span>
-              <strong>파이썬과 코랩</strong>
-              <span>역할 구분과 접속 3단계</span>
+              <strong>코랩 시작</strong>
+              <span>접속, 셀 구조, 단축키</span>
             </li>
             <li>
               <span class="step-no">구간 03</span>
-              <strong>코랩 사용법</strong>
-              <span>셀 구조와 단축키 실행</span>
+              <strong>핵심 문법 실습</strong>
+              <span>출력 · 리스트 · for · if</span>
             </li>
             <li class="is-focus">
               <span class="step-no">구간 04 · 집중 실습</span>
-              <strong>핵심 실습 4종</strong>
-              <span>출력 · 리스트 · for · if</span>
+              <strong>AI 프롬프트 실습</strong>
+              <span>저장 · A/B 비교 · 내 라이브러리</span>
             </li>
             <li>
               <span class="step-no">구간 05</span>
               <strong>정리 및 응용</strong>
-              <span>결과물 쇼케이스 &amp; 로드맵</span>
+              <span>미니 도전 &amp; 로드맵</span>
             </li>
           </ol>
           <div class="callout">
             <strong>오늘의 달성 목표</strong>
-            <p>프로그램 설치 없이 브라우저에서 파이썬 코드를 직접 입력하고 결과를 즉시 확인합니다.</p>
+            <p>프로그램 설치 없이 브라우저에서 파이썬 코드를 직접 입력하고, 프롬프트를 코드로 저장·비교해 봅니다.</p>
           </div>
         </div>
       </section>
@@ -319,6 +319,46 @@
         </div>
       </section>
 
+      <!-- 로컬 vs 웹 -->
+      <section id="local-vs-web" class="page" data-title="로컬 vs 웹(코랩)">
+        <div class="page-inner">
+          <p class="eyebrow">LOCAL VS WEB</p>
+          <h2>코드는 같고, 실행되는 곳이 달라요</h2>
+          <div class="split">
+            <article class="card">
+              <p class="badge">로컬</p>
+              <h3>내 PC에서 실행 (예: 윈도우 파워셀)</h3>
+              <ul class="plain-list">
+                <li><strong>실행 창</strong><span>윈도우 파워셀(터미널)에 명령을 입력</span></li>
+                <li><strong>준비</strong><span>파이썬 설치, PATH 설정, 패키지 설치</span></li>
+                <li><strong>성능</strong><span>내 PC 사양에 따라 달라요</span></li>
+                <li><strong>저장</strong><span>내 PC에 그대로 남아요</span></li>
+                <li><strong>공유</strong><span>파일을 보내야 해요</span></li>
+                <li><strong>인터넷</strong><span>없어도 실행할 수 있어요</span></li>
+                <li><strong>환경 오류</strong><span>버전·경로 문제가 생기기 쉬워요</span></li>
+              </ul>
+            </article>
+            <article class="card card-key">
+              <p class="badge">웹 · 코랩</p>
+              <h3>구글 서버에서 실행</h3>
+              <ul class="plain-list">
+                <li><strong>실행 창</strong><span>브라우저의 코드 셀에 입력</span></li>
+                <li><strong>준비</strong><span>브라우저만 열면 바로 시작</span></li>
+                <li><strong>성능</strong><span>구글 서버 사용, 무료 GPU도 가능 (한도 있음)</span></li>
+                <li><strong>저장</strong><span>세션이 끝나면 사라져요 (드라이브에 따로 저장)</span></li>
+                <li><strong>공유</strong><span>링크 하나로 공유</span></li>
+                <li><strong>인터넷</strong><span>반드시 필요해요</span></li>
+                <li><strong>환경 오류</strong><span>구글이 환경을 맞춰 뒀어요</span></li>
+              </ul>
+            </article>
+          </div>
+          <div class="callout callout-soft">
+            <strong>한 줄 정리</strong>
+            <p>같은 파이썬 코드라도 내 PC에서 돌리면 <b>로컬</b>, 구글 서버에서 돌리면 <b>웹(코랩)</b>입니다. 그래서 설치 없이 바로 시작할 수 있어요.</p>
+          </div>
+        </div>
+      </section>
+
       <!-- 코랩 소개 -->
       <section id="about-colab" class="page" data-title="구글 코랩이란?">
         <div class="page-inner">
@@ -376,46 +416,6 @@
             </li>
           </ol>
           <p class="flow-caption">실행 요청 → 화면 출력</p>
-        </div>
-      </section>
-
-      <!-- 로컬 vs 웹 -->
-      <section id="local-vs-web" class="page" data-title="로컬 vs 웹(코랩)">
-        <div class="page-inner">
-          <p class="eyebrow">LOCAL VS WEB</p>
-          <h2>코드는 같고, 실행되는 곳이 달라요</h2>
-          <div class="split">
-            <article class="card">
-              <p class="badge">로컬</p>
-              <h3>내 PC에서 실행 (예: 윈도우 파워셀)</h3>
-              <ul class="plain-list">
-                <li><strong>실행 창</strong><span>윈도우 파워셀(터미널)에 명령을 입력</span></li>
-                <li><strong>준비</strong><span>파이썬 설치, PATH 설정, 패키지 설치</span></li>
-                <li><strong>성능</strong><span>내 PC 사양에 따라 달라요</span></li>
-                <li><strong>저장</strong><span>내 PC에 그대로 남아요</span></li>
-                <li><strong>공유</strong><span>파일을 보내야 해요</span></li>
-                <li><strong>인터넷</strong><span>없어도 실행할 수 있어요</span></li>
-                <li><strong>환경 오류</strong><span>버전·경로 문제가 생기기 쉬워요</span></li>
-              </ul>
-            </article>
-            <article class="card card-key">
-              <p class="badge">웹 · 코랩</p>
-              <h3>구글 서버에서 실행</h3>
-              <ul class="plain-list">
-                <li><strong>실행 창</strong><span>브라우저의 코드 셀에 입력</span></li>
-                <li><strong>준비</strong><span>브라우저만 열면 바로 시작</span></li>
-                <li><strong>성능</strong><span>구글 서버 사용, 무료 GPU도 가능 (한도 있음)</span></li>
-                <li><strong>저장</strong><span>세션이 끝나면 사라져요 (드라이브에 따로 저장)</span></li>
-                <li><strong>공유</strong><span>링크 하나로 공유</span></li>
-                <li><strong>인터넷</strong><span>반드시 필요해요</span></li>
-                <li><strong>환경 오류</strong><span>구글이 환경을 맞춰 뒀어요</span></li>
-              </ul>
-            </article>
-          </div>
-          <div class="callout callout-soft">
-            <strong>한 줄 정리</strong>
-            <p>같은 파이썬 코드라도 내 PC에서 돌리면 <b>로컬</b>, 구글 서버에서 돌리면 <b>웹(코랩)</b>입니다. 그래서 설치 없이 바로 시작할 수 있어요.</p>
-          </div>
         </div>
       </section>
 
@@ -732,6 +732,35 @@
         </div>
       </section>
 
+      <!-- 19 -->
+      <section id="challenge" class="page" data-title="미니 도전">
+        <div class="page-inner">
+          <p class="eyebrow">MINI CHALLENGE</p>
+          <h2>미니 도전: 나의 취미 소개하기</h2>
+          <div class="split practice">
+            <div class="notebook notebook-small">
+              <div class="cell">
+                <div class="cell-head">
+                  <span class="cell-label">코랩 실제 입력창 [1]</span>
+                  <button class="copy-btn" type="button" data-copy-target="code-5">코드 복사</button>
+                </div>
+                <pre class="code"><code id="code-5">취미 = [<span class="str">"독서"</span>, <span class="str">"산책"</span>, <span class="str">"요리"</span>]
+<span class="kw">for</span> 이름 <span class="kw">in</span> 취미:
+    <span class="fn">print</span>(<span class="str">"제 취미:"</span>, 이름)</code></pre>
+              </div>
+              <div class="output"><span class="out-label">실행 결과 (Output)</span>제 취미: 독서<br />제 취미: 산책<br />제 취미: 요리</div>
+            </div>
+            <div>
+              <p class="eyebrow">배운 것 모두 쓰기</p>
+              <ul class="plain-list">
+                <li><strong>리스트 속 글자만 바꿔보세요</strong><span>독서·산책·요리를 내 취미로 바꾸면 결과도 바로 달라집니다.</span></li>
+                <li><strong>결과를 함께 보여주세요</strong><span>실행 결과 화면을 보며 서로의 결과물을 소개해 봅니다.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- 18 -->
       <section id="inspiration" class="page" data-title="이런 것도 만들 수 있어요">
         <div class="page-inner">
@@ -772,35 +801,6 @@
         </div>
       </section>
 
-      <!-- 19 -->
-      <section id="challenge" class="page" data-title="미니 도전">
-        <div class="page-inner">
-          <p class="eyebrow">MINI CHALLENGE</p>
-          <h2>미니 도전: 나의 취미 소개하기</h2>
-          <div class="split practice">
-            <div class="notebook notebook-small">
-              <div class="cell">
-                <div class="cell-head">
-                  <span class="cell-label">코랩 실제 입력창 [1]</span>
-                  <button class="copy-btn" type="button" data-copy-target="code-5">코드 복사</button>
-                </div>
-                <pre class="code"><code id="code-5">취미 = [<span class="str">"독서"</span>, <span class="str">"산책"</span>, <span class="str">"요리"</span>]
-<span class="kw">for</span> 이름 <span class="kw">in</span> 취미:
-    <span class="fn">print</span>(<span class="str">"제 취미:"</span>, 이름)</code></pre>
-              </div>
-              <div class="output"><span class="out-label">실행 결과 (Output)</span>제 취미: 독서<br />제 취미: 산책<br />제 취미: 요리</div>
-            </div>
-            <div>
-              <p class="eyebrow">배운 것 모두 쓰기</p>
-              <ul class="plain-list">
-                <li><strong>리스트 속 글자만 바꿔보세요</strong><span>독서·산책·요리를 내 취미로 바꾸면 결과도 바로 달라집니다.</span></li>
-                <li><strong>결과를 함께 보여주세요</strong><span>실행 결과 화면을 보며 서로의 결과물을 소개해 봅니다.</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- AI 1 -->
       <section id="ai-1" class="page" data-title="AI 실습 1 · 프롬프트 템플릿">
         <div class="page-inner">
@@ -818,7 +818,7 @@
 프롬프트 = 템플릿.<span class="fn">format</span>(주제=<span class="str">"프롬프트"</span>, 독자=<span class="str">"초등학생"</span>)
 <span class="fn">print</span>(프롬프트)</code></pre>
               </div>
-              <div class="output"><span class="out-label">실행 결과 (Output)</span>프롬프트를 초등학생에게 설명하는 한 문장을 써줘.</div>
+              <div class="output"><span class="out-label">완성된 프롬프트 (AI에게 보낼 주문서)</span>프롬프트를 초등학생에게 설명하는 한 문장을 써줘.</div>
             </div>
             <div>
               <p class="eyebrow">프롬프트를 코드로 저장하면</p>
@@ -858,7 +858,7 @@
     <span class="fn">print</span>(<span class="str">"B:"</span>, 프롬프트_B.<span class="fn">format</span>(글=글))
     <span class="fn">print</span>(<span class="str">"-----"</span>)</code></pre>
               </div>
-              <div class="output"><span class="out-label">실행 결과 (Output)</span>A: 다음 글을 요약해줘.<br /><br />구글 코랩은 설치 없이 …<br />B: 너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 …</div>
+              <div class="output"><span class="out-label">완성된 프롬프트 (AI에게 보낼 주문서)</span>A: 다음 글을 요약해줘.<br /><br />구글 코랩은 설치 없이 …<br />B: 너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 …</div>
             </div>
             <div>
               <p class="eyebrow">같은 입력, 다른 프롬프트</p>
@@ -898,7 +898,7 @@ drive.<span class="fn">mount</span>(<span class="str">"/content/drive"</span>)
     불러온 = json.<span class="fn">load</span>(f)
 <span class="fn">print</span>(불러온[<span class="str">"요약_B"</span>].<span class="fn">format</span>(글=글목록[0]))</code></pre>
               </div>
-              <div class="output"><span class="out-label">실행 결과 (Output)</span>너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 브라우저에서 파이썬을 실행할 수 있는 무료 노트북 서비스다.</div>
+              <div class="output"><span class="out-label">완성된 프롬프트 (AI에게 보낼 주문서)</span>너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 브라우저에서 파이썬을 실행할 수 있는 무료 노트북 서비스다.</div>
             </div>
             <div>
               <p class="eyebrow">구글 드라이브에 보관하면</p>
@@ -1091,44 +1091,6 @@ MODEL = <span class="str">"gemini-3.8-flash"</span>
         </div>
       </section>
 
-      <!-- 21 -->
-      <section id="appendix" class="page" data-title="부록 · 화면 구성">
-        <div class="page-inner">
-          <p class="eyebrow">APPENDIX</p>
-          <h2>부록: 구글 코랩 전체 화면 구성 가이드</h2>
-          <div class="notebook" aria-label="코랩 전체 화면 구성">
-            <div class="notebook-bar">
-              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="notebook-file">colab_python_workshop.ipynb</span>
-              <span class="notebook-status">Google 드라이브에 저장됨</span>
-            </div>
-            <ul class="menu-bar" aria-label="코랩 메뉴">
-              <li>파일</li><li>수정</li><li>보기</li><li>삽입</li><li>런타임</li><li>도구</li>
-              <li class="menu-sep">+ 코드</li><li>+ 텍스트</li>
-            </ul>
-            <div class="cell">
-              <div class="cell-head">
-                <span class="cell-label">연결됨 (RAM 1.4GB / 디스크 25GB)</span>
-                <span class="cell-state">실행 완료</span>
-              </div>
-              <pre class="code"><code><span class="fn">print</span>(<span class="str">"구글 코랩 환경 구축 완료! 수고하셨습니다 🎉"</span>)</code></pre>
-            </div>
-            <div class="output"><span aria-hidden="true">✓</span> 구글 코랩 환경 구축 완료! 수고하셨습니다 🎉</div>
-          </div>
-          <div class="callout">
-            <strong>💡 실습 파일 보관</strong>
-            <p>[파일] → [드라이브에 사본 저장]을 누르면 개인 구글 드라이브에 영구 저장됩니다.</p>
-          </div>
-          <p class="links">
-            공식 바로가기:
-            <a href="https://www.python.org/" target="_blank" rel="noopener">Python.org ↗</a>
-            <span aria-hidden="true">|</span>
-            <a href="https://colab.research.google.com/" target="_blank" rel="noopener">Colab 접속 ↗</a>
-            <span class="qa">Q&amp;A 및 자유 질문</span>
-          </p>
-        </div>
-      </section>
-
       <!-- 부록: 왼쪽 메뉴 -->
       <section id="appendix-menu" class="page" data-title="부록 · 왼쪽 메뉴">
         <div class="page-inner">
@@ -1184,6 +1146,45 @@ MODEL = <span class="str">"gemini-3.8-flash"</span>
           </div>
         </div>
       </section>
+
+      <!-- 21 -->
+      <section id="appendix" class="page" data-title="부록 · 화면 구성">
+        <div class="page-inner">
+          <p class="eyebrow">APPENDIX</p>
+          <h2>부록: 구글 코랩 전체 화면 구성 가이드</h2>
+          <div class="notebook" aria-label="코랩 전체 화면 구성">
+            <div class="notebook-bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="notebook-file">colab_python_workshop.ipynb</span>
+              <span class="notebook-status">Google 드라이브에 저장됨</span>
+            </div>
+            <ul class="menu-bar" aria-label="코랩 메뉴">
+              <li>파일</li><li>수정</li><li>보기</li><li>삽입</li><li>런타임</li><li>도구</li>
+              <li class="menu-sep">+ 코드</li><li>+ 텍스트</li>
+            </ul>
+            <div class="cell">
+              <div class="cell-head">
+                <span class="cell-label">연결됨 (RAM 1.4GB / 디스크 25GB)</span>
+                <span class="cell-state">실행 완료</span>
+              </div>
+              <pre class="code"><code><span class="fn">print</span>(<span class="str">"구글 코랩 환경 구축 완료! 수고하셨습니다 🎉"</span>)</code></pre>
+            </div>
+            <div class="output"><span aria-hidden="true">✓</span> 구글 코랩 환경 구축 완료! 수고하셨습니다 🎉</div>
+          </div>
+          <div class="callout">
+            <strong>💡 실습 파일 보관</strong>
+            <p>[파일] → [드라이브에 사본 저장]을 누르면 개인 구글 드라이브에 영구 저장됩니다.</p>
+          </div>
+          <p class="links">
+            공식 바로가기:
+            <a href="https://www.python.org/" target="_blank" rel="noopener">Python.org ↗</a>
+            <span aria-hidden="true">|</span>
+            <a href="https://colab.research.google.com/" target="_blank" rel="noopener">Colab 접속 ↗</a>
+            <span class="qa">Q&amp;A 및 자유 질문</span>
+          </p>
+        </div>
+      </section>
+
     </main>
     </div>
 
