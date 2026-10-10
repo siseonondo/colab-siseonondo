@@ -2675,3 +2675,13 @@ blockquote {
   font-size: 13.5px;
   cursor: pointer;
 }
+
+.source-note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.source-note a {
+  color: var(--accent);
+}
