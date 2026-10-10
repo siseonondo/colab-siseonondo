@@ -380,6 +380,64 @@
     })
   }
 
+  // ---------- 발표 모드: 전체 화면에서 페이지만 크게 ----------
+  var presentBtn = document.getElementById('presentBtn')
+  var presenting = false
+
+  function relayoutNow() {
+    fit(pages[current])
+    layoutThumbs()
+  }
+  function setPresent(on) {
+    presenting = on
+    document.documentElement.classList.toggle('presenting', on)
+    if (presentBtn) presentBtn.textContent = on ? '종료' : '발표'
+    setTimeout(relayoutNow, 60)
+    setTimeout(relayoutNow, 350)
+  }
+  function enterPresent() {
+    setPresent(true)
+    var el = document.documentElement
+    try {
+      var req = el.requestFullscreen || el.webkitRequestFullscreen
+      if (req) {
+        var p = req.call(el)
+        if (p && p.catch) p.catch(function () {})
+      }
+    } catch (e) {}
+  }
+  function exitPresent() {
+    setPresent(false)
+    try {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        var ex = document.exitFullscreen || document.webkitExitFullscreen
+        if (ex) {
+          var p = ex.call(document)
+          if (p && p.catch) p.catch(function () {})
+        }
+      }
+    } catch (e) {}
+  }
+  function togglePresent() {
+    if (presenting) exitPresent()
+    else enterPresent()
+  }
+  if (presentBtn) presentBtn.addEventListener('click', togglePresent)
+  document.addEventListener('fullscreenchange', function () {
+    if (presenting && !document.fullscreenElement) setPresent(false)
+  })
+  document.addEventListener('keydown', function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return
+    var tag = (e.target && e.target.tagName) || ''
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return
+    if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault()
+      togglePresent()
+    } else if (e.key === 'Escape' && presenting && toc.hidden) {
+      exitPresent()
+    }
+  })
+
   show(fromHash(), false)
   layoutThumbs()
   centerSide(sideLinks[current], true)

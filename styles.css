@@ -2545,3 +2545,32 @@ blockquote {
   top: 14px;
   left: 6px;
 }
+
+/* 발표 모드: 머리글·왼쪽 메뉴를 숨기고 페이지를 크게 */
+.presenting .site-header,
+.presenting .side,
+.presenting .side-resizer {
+  display: none !important;
+}
+.presenting .pager {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.presenting .pager .pager-btn {
+  display: none;
+}
+.presenting .pager .progress {
+  flex: 1;
+  height: 4px;
+  margin: 0;
+}
+.present-btn {
+  margin-right: 8px;
+}
+.presenting .pager {
+  height: 6px;
+}
+.js .toc-btn.present-btn {
+  display: inline-block;
+}
