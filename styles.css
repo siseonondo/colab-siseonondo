@@ -2377,3 +2377,93 @@ blockquote {
   color: #b3261e;
   font-weight: 700;
 }
+
+/* 실제 코랩처럼: ▶ 버튼은 셀 안쪽 왼쪽, 결과는 같은 셀 바로 아래 */
+.real-cell {
+  position: relative;
+  padding: 18px 18px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #ffffff;
+}
+.rc-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.rc-run {
+  position: relative;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #3c3c3c;
+  color: #ffffff;
+  font-size: 17px;
+  padding-left: 3px;
+}
+.rc-code {
+  position: relative;
+  flex: 1;
+  margin: 0;
+  padding: 12px 16px;
+  min-height: 44px;
+  border: 1px solid #dcd7cc;
+  border-radius: 8px;
+  background: #f5f3ee;
+  color: #1c1a17;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  line-height: 1.5;
+}
+.rc-code .num {
+  color: #1a6b3c;
+}
+.rc-out {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+.rc-gutter {
+  flex: 0 0 44px;
+}
+.rc-text {
+  flex: 1;
+  padding: 4px 16px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: #1c1a17;
+}
+.rc-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+}
+.rc-b1 {
+  top: -10px;
+  right: -8px;
+}
+.rc-b2 {
+  top: -8px;
+  left: -8px;
+}
+.rc-b3 {
+  top: 50%;
+  right: -8px;
+  transform: translateY(-50%);
+}
