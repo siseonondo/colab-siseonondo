@@ -848,7 +848,7 @@
                   <button class="copy-btn" type="button" data-copy-target="code-ai-2">코드 복사</button>
                 </div>
                 <pre class="code"><code id="code-ai-2">프롬프트_A = <span class="str">"다음 글을 요약해줘.\n\n{글}"</span>
-프롬프트_B = <span class="str">"너는 편집자야. 30자 이내 한 문장으로 요약해줘.\n\n{글}"</span>
+프롬프트_B = <span class="str">"너는 편집자야. 10자 이내 한 문장으로 요약해줘.\n\n{글}"</span>
 
 글목록 = [
     <span class="str">"구글 코랩은 설치 없이 브라우저에서 파이썬을 실행할 수 있는 무료 노트북 서비스다."</span>,
@@ -861,7 +861,7 @@
     <span class="fn">print</span>(<span class="str">"B:"</span>, 프롬프트_B.<span class="fn">format</span>(글=글))
     <span class="fn">print</span>(<span class="str">"-----"</span>)</code></pre>
               </div>
-              <div class="output"><span class="out-label">완성된 프롬프트 (AI에게 보낼 주문서)</span>A: 다음 글을 요약해줘.<br /><br />구글 코랩은 설치 없이 …<br />B: 너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 …</div>
+              <div class="output"><span class="out-label">완성된 프롬프트 (AI에게 보낼 주문서)</span>A: 다음 글을 요약해줘.<br /><br />구글 코랩은 설치 없이 …<br />B: 너는 편집자야. 10자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 …</div>
             </div>
             <div>
               <p class="eyebrow">같은 입력, 다른 프롬프트</p>
@@ -901,7 +901,7 @@ drive.<span class="fn">mount</span>(<span class="str">"/content/drive"</span>)
     불러온 = json.<span class="fn">load</span>(f)
 <span class="fn">print</span>(불러온[<span class="str">"요약_B"</span>].<span class="fn">format</span>(글=글목록[0]))</code></pre>
               </div>
-              <div class="output"><span class="out-label">완성된 프롬프트 (AI에게 보낼 주문서)</span>너는 편집자야. 30자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 브라우저에서 파이썬을 실행할 수 있는 무료 노트북 서비스다.</div>
+              <div class="output"><span class="out-label">완성된 프롬프트 (AI에게 보낼 주문서)</span>너는 편집자야. 10자 이내 한 문장으로 요약해줘.<br /><br />구글 코랩은 설치 없이 브라우저에서 파이썬을 실행할 수 있는 무료 노트북 서비스다.</div>
             </div>
             <div>
               <p class="eyebrow">구글 드라이브에 보관하면</p>
@@ -1048,14 +1048,14 @@ MODEL = <span class="str">"gemini-3.8-flash"</span>
     <span class="fn">print</span>(<span class="str">"B:"</span>, <span class="fn">ask</span>(프롬프트_B.<span class="fn">format</span>(글=글)))
     <span class="fn">print</span>(<span class="str">"-----"</span>)</code></pre>
               </div>
-              <div class="output"><span class="out-label">실행 결과 (예시 · 매번 조금씩 달라요)</span>A: 구글 코랩은 설치 없이 브라우저에서 바로 사용할 수 있는 무료 파이썬 서비스입니다.<br />B: 구글 코랩은 설치 없이 쓰는 무료 파이썬 서비스다.<br />-----</div>
+              <div class="output"><span class="out-label">실행 결과 (예시 · 매번 조금씩 달라요)</span>A: 구글 코랩은 설치 없이 브라우저에서 바로 사용할 수 있는 무료 파이썬 서비스입니다.<br />B: 무료 파이썬 노트북.<br />-----</div>
             </div>
             <div>
               <p class="eyebrow">바뀐 점은 딱 하나</p>
               <ul class="plain-list">
                 <li><strong>키 없이: 주문서만 보여요</strong><span><code>print(프롬프트_A.format(글=글))</code> → 완성된 프롬프트 문장이 찍힙니다.</span></li>
                 <li><strong>키 있으면: AI의 답이 와요</strong><span><code>print(ask(프롬프트_A.format(글=글)))</code> → 주문서를 AI에게 보내 요약 결과가 찍힙니다.</span></li>
-                <li><strong>A와 B의 차이가 보여요</strong><span>A는 길고 설명이 붙고, B는 짧고 군더더기가 없어요. <code>30자</code>를 <code>10자</code>로 바꿔 다시 실행해 보세요.</span></li>
+                <li><strong>A와 B의 차이가 보여요</strong><span>A는 길고 설명이 붙고, B는 짧고 군더더기가 없어요. <code>10자</code>를 <code>5자</code>로 바꿔 다시 실행해 보세요.</span></li>
               </ul>
             </div>
           </div>
