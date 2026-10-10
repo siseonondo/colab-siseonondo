@@ -2685,3 +2685,132 @@ blockquote {
 .source-note a {
   color: var(--accent);
 }
+
+/* ---- 빔프로젝터용: 글자를 조금 키우고 한 단계 더 진하게 ---- */
+:root {
+  --ink: #0d0b09;
+  --muted: #3a342b;
+  --faint: #524a3f;
+}
+
+.page-inner h2,
+.page-inner > h2 {
+  font-weight: 700;
+}
+.page-inner h3 {
+  font-weight: 800;
+}
+
+/* 본문 설명 글: 굵기 500 + 크기 소폭 확대 */
+.card p,
+.split .card p,
+.plain-list span,
+.step p,
+.step-extra,
+.callout p,
+.metaphor,
+.sample,
+.rec,
+.lang-card > p:not(.badge),
+.lang-meta,
+.menu-card p:not(.menu-icon):not(.badge),
+.sym-where,
+.sym-card p.sym-where,
+.recap-grid span:not(.recap-emoji),
+.rc-textcell span,
+.source-note,
+.section-lead,
+.hero-lead {
+  font-weight: 500;
+}
+.plain-list span,
+.step p,
+.step-extra,
+.callout p,
+.metaphor,
+.sample,
+.rec {
+  font-size: 16.5px;
+}
+.card p,
+.split .card p,
+.recap-grid span:not(.recap-emoji) {
+  font-size: 17px;
+}
+.card-grid-4 .card p {
+  font-size: 15px;
+}
+.lang-card > p:not(.badge) {
+  font-size: 16px;
+}
+.lang-meta,
+.menu-card p:not(.menu-icon):not(.badge),
+.sym-where,
+.sym-card p.sym-where {
+  font-size: 15px;
+}
+.source-note {
+  font-size: 14px;
+}
+.rc-textcell span {
+  font-size: 15.5px;
+}
+
+/* 작은 라벨류 */
+.eyebrow {
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.badge,
+.recap-grid em,
+.lang-meta b {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+.out-label,
+.cell-label,
+.cell-head,
+.output,
+.copy-btn {
+  font-size: 14.5px;
+}
+.out-label,
+.cell-label {
+  font-weight: 600;
+}
+.tag,
+.timeline li,
+.step-no,
+.card-note {
+  font-weight: 600;
+}
+
+/* 코드는 또렷하게 */
+.code {
+  font-size: 16.5px;
+  font-weight: 500;
+}
+.code-mini,
+.recap-grid .recap-code {
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.output {
+  font-weight: 500;
+}
+.rc-code,
+.rc-text {
+  font-weight: 500;
+}
+
+/* 빔용 보정: 코드 줄이 잘리거나 페이지가 넘치지 않도록 */
+.code {
+  font-size: 16px;
+}
+.ai-wide .code,
+.ai-wrap .code {
+  font-size: 14.5px;
+}
+.practice .code {
+  letter-spacing: -0.01em;
+}

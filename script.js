@@ -54,7 +54,7 @@
   var tocList = document.getElementById('tocList')
   var MIN_ZOOM = 0.72
   var MIN_ZOOM_PHONE = 0.82
-  var MAX_ZOOM = 1.2
+  var MAX_ZOOM = 1.3
   var BASE_W = 1080
   var MIN_LOGICAL_W = 780
   var ALIASES = { practice: 'practice-1', top: 'intro' }
@@ -151,7 +151,8 @@
     var W = stage.clientWidth
     var H = stage.clientHeight - (stage.clientWidth > 700 ? 52 : 28)
     var wide = W > 760
-    var maxZoom = wide ? Math.min(MAX_ZOOM, W / MIN_LOGICAL_W) : 1
+    var cap = presenting ? 1.5 : MAX_ZOOM
+    var maxZoom = wide ? Math.min(cap, W / MIN_LOGICAL_W) : 1
     var minZ = wide ? MIN_ZOOM : MIN_ZOOM_PHONE
     var chosen = minZ
     for (var z = maxZoom; z >= minZ - 0.001; z -= 0.04) {
