@@ -2467,3 +2467,29 @@ blockquote {
   right: -8px;
   transform: translateY(-50%);
 }
+
+/* 미리보기: 각 카드에 예시 코드 한 줄 */
+.recap-grid .recap-code {
+  display: block;
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #1c1a17;
+  color: #f3efe6;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.recap-grid .recap-code {
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  font-size: 12.5px;
+  white-space: normal;
+}
+.recap-grid .recap-code {
+  white-space: nowrap;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+}
