@@ -488,12 +488,18 @@
           <p class="eyebrow">CORE INTERFACE</p>
           <h2>코랩의 핵심 단위: 셀(Cell) 구조</h2>
           <div class="split split-cell">
-            <div class="real-cell" aria-label="실제 코랩 셀 모양">
+            <div class="real-cell" aria-label="실제 코랩 화면 모양">
+              <div class="rc-toolbar">
+                <span class="rc-pill">+ 코드</span>
+                <span class="rc-pill">+ 텍스트</span>
+                <span class="rc-pill rc-pill-run">▷ 모두 실행<i class="rc-badge rc-b5">5</i></span>
+              </div>
               <div class="rc-row">
                 <span class="rc-run" aria-hidden="true">▶<i class="rc-badge rc-b2">2</i></span>
                 <pre class="rc-code"><code><span class="num">10</span> + <span class="num">20</span></code><i class="rc-badge rc-b1">1</i></pre>
               </div>
               <div class="rc-out"><span class="rc-gutter" aria-hidden="true"></span><span class="rc-text">30</span><i class="rc-badge rc-b3">3</i></div>
+              <div class="rc-textcell"><i class="rc-badge rc-b4">4</i><strong>내 첫 노트</strong><span>설명 글을 쓰는 칸</span></div>
             </div>
             <ol class="plain-list plain-list-numbered">
               <li><strong>1. 코드 셀 (Code Cell)</strong><span>원하는 파이썬 명령을 작성하는 개별 블록입니다.</span></li>
