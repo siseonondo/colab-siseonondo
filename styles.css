@@ -2342,3 +2342,23 @@ blockquote {
   white-space: pre-wrap;
   word-break: break-all;
 }
+
+/* 부록: 왼쪽 메뉴 */
+.menu-card {
+  padding: 16px 16px 14px;
+}
+.menu-card .menu-icon {
+  margin: 0 0 4px;
+  font-size: 28px;
+  line-height: 1.2;
+  font-family: var(--font-mono);
+}
+.menu-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+.menu-card p:not(.menu-icon):not(.badge) {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--muted);
+}
