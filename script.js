@@ -188,6 +188,10 @@
     barEl.style.width = ((i + 1) / pages.length) * 100 + '%'
     prevBtn.disabled = i === 0
     nextBtn.disabled = i === pages.length - 1
+    var pp = document.getElementById('presPrev')
+    var pn = document.getElementById('presNext')
+    if (pp) pp.disabled = i === 0
+    if (pn) pn.disabled = i === pages.length - 1
     tocLinks.forEach(function (a, k) {
       if (k === i) a.setAttribute('aria-current', 'true')
       else a.removeAttribute('aria-current')
@@ -244,6 +248,8 @@
       if (e.key === 'Escape') closeToc()
       return
     }
+    var askBox = document.getElementById('presentAsk')
+    if (askBox && !askBox.hidden) return
     if (e.target && e.target.id === 'sideResizer') return
     var tag = (e.target && e.target.tagName) || ''
     if (tag === 'INPUT' || tag === 'TEXTAREA') return
@@ -391,11 +397,13 @@
   function setPresent(on) {
     presenting = on
     document.documentElement.classList.toggle('presenting', on)
+    if (presPrev) presPrev.hidden = !on
+    if (presNext) presNext.hidden = !on
     if (presentBtn) presentBtn.textContent = on ? '종료' : '발표'
     setTimeout(relayoutNow, 60)
     setTimeout(relayoutNow, 350)
   }
-  function enterPresent() {
+  function startPresent() {
     setPresent(true)
     var el = document.documentElement
     try {
@@ -418,10 +426,51 @@
       }
     } catch (e) {}
   }
+  var askEl = document.getElementById('presentAsk')
+  var askFromStart = document.getElementById('presentFromStart')
+  var askFromHere = document.getElementById('presentFromHere')
+  var askCancel = document.getElementById('presentCancel')
+  function openAsk() {
+    askEl.hidden = false
+    askFromHere.focus()
+  }
+  function closeAsk() {
+    askEl.hidden = true
+  }
+  function enterPresent() {
+    // 첫 페이지에서는 물어볼 필요 없이 바로 시작
+    if (current === 0 || !askEl) startPresent()
+    else openAsk()
+  }
   function togglePresent() {
     if (presenting) exitPresent()
     else enterPresent()
   }
+  if (askEl) {
+    askFromStart.addEventListener('click', function () {
+      closeAsk()
+      show(0, true)
+      startPresent()
+    })
+    askFromHere.addEventListener('click', function () {
+      closeAsk()
+      startPresent()
+    })
+    askCancel.addEventListener('click', closeAsk)
+    askEl.addEventListener('click', function (e) {
+      if (e.target === askEl) closeAsk()
+    })
+    askEl.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        e.stopPropagation()
+        closeAsk()
+      }
+    })
+  }
+  var presPrev = document.getElementById('presPrev')
+  var presNext = document.getElementById('presNext')
+  if (presPrev) presPrev.addEventListener('click', prev)
+  if (presNext) presNext.addEventListener('click', next)
   if (presentBtn) presentBtn.addEventListener('click', togglePresent)
   document.addEventListener('fullscreenchange', function () {
     if (presenting && !document.fullscreenElement) setPresent(false)
@@ -430,6 +479,7 @@
     if (e.altKey || e.ctrlKey || e.metaKey) return
     var tag = (e.target && e.target.tagName) || ''
     if (tag === 'INPUT' || tag === 'TEXTAREA') return
+    if (askEl && !askEl.hidden) return
     if (e.key === 'f' || e.key === 'F') {
       e.preventDefault()
       togglePresent()
